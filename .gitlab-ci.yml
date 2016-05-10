@@ -1,0 +1,9 @@
+image: python:3.5
+
+pages:
+  script:
+  - pip install "nikola[extras]"
+  - nikola build
+  artifacts:
+    paths:
+    - public
