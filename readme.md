@@ -27,16 +27,23 @@ This project's static Pages are built by [GitLab CI][ci], following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
 ```
-image:python:3.5
+image: python:3.5
+
 pages:
+  stage: 
+    build
   script:
-  - pip install "nikola[extras]"
-  - nikola build
+    - apt-get update && apt-get install locales-all
+    - pip install "nikola[extras]"
+    - nikola build
   artifacts:
     paths:
-    - public
+      - public
 ```
 
+This tells the runner to use Python 3.5, install the `locales-all` package and  install Nikola.
+
+Optional ones are included by using the `[extra]` flag, such as Markdown and Jinja2 (instead of just installing Docutils and Maco). You can drop the `[extras]` part and install optional features by hand if you need them instead. This is documented in [Nikola's getting started guide.](https://getnikola.com/getting-started.html)
 
 ## Building locally
 
