@@ -41,9 +41,11 @@ pages:
       - public
 ```
 
-This tells the runner to use Python 3.5, install the `locales-all` package and  install Nikola.
+This basically means: use Python 3.5, install the `locales-all` package and  install Nikola.
 
-Optional ones are included by using the `[extra]` flag, such as Markdown and Jinja2 (instead of just installing Docutils and Maco). You can drop the `[extras]` part and install optional features by hand if you need them instead. This is documented in [Nikola's getting started guide.](https://getnikola.com/getting-started.html)
+Note that installing `locales-all` won't be needed when testing locally.  It is needed here because only the `C` and `posix` locales are installed by default. This default configuration would cause Nikola to warn about missing locales or even fail to build the site.
+
+Optional   features for Nikola are included by using the `[extra]` flag, such as Markdown and Jinja2 (instead of just installing Docutils and Maco). You can drop the `[extras]` part and install  them by hand if you need them instead. This is documented in [Nikola's getting started guide.](https://getnikola.com/getting-started.html)
 
 ## Building locally
 
