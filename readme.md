@@ -81,6 +81,10 @@ unless you want to contribute back to the upstream project.
     Either that you have wrongly set up the CSS URL in your templates, or
     your static generator has a configuration option that needs to be explicitly
     set in order to serve static assets under a relative URL.
+    
+----
+
+Forked from @sukiletxe
 
 [ci]: https://about.gitlab.com/gitlab-ci/
 [nikola]: https://getnikola.com/
