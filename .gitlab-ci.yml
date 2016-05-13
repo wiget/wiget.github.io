@@ -1,12 +1,16 @@
-image: python:3.5
+image: mgarrido/nikola
+
+test:
+  script:
+  - nikola build
+  except:
+  - master
 
 pages:
-  stage: 
-    build
   script:
-    - apt-get update && apt-get install locales-all
-    - pip install "nikola[extras]"
     - nikola build
   artifacts:
     paths:
-      - public
+    - public
+  only:
+  - master
