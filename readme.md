@@ -27,25 +27,25 @@ This project's static Pages are built by [GitLab CI][ci], following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
 ```
-image: python:3.5
+image: paddyhack/nikola
+
+test:
+  script:
+  - nikola build
+  except:
+  - master
 
 pages:
-  stage: 
-    build
   script:
-    - apt-get update && apt-get install locales-all
-    - pip install "nikola[extras]"
     - nikola build
   artifacts:
     paths:
-      - public
+    - public
+  only:
+  - master
 ```
 
-This basically means: use Python 3.5, install the `locales-all` package and  install Nikola.
-
-Note that installing `locales-all` won't be needed when testing locally.  It is needed here because only the `C` and `posix` locales are installed by default. This default configuration would cause Nikola to warn about missing locales or even fail to build the site.
-
-Optional   features for Nikola are included by using the `[extra]` flag, such as Markdown and Jinja2 (instead of just installing Docutils and Maco). You can drop the `[extras]` part and install  them by hand if you need them instead. This is documented in [Nikola's getting started guide.](https://getnikola.com/getting-started.html)
+This basically means: use the `paddyhack/nikola` image, which will install Nikola with all its features (`"nikola [extras]"`), and build the site.
 
 ## Building locally
 
