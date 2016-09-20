@@ -27,7 +27,7 @@ This project's static Pages are built by [GitLab CI][ci], following the steps
 defined in [`.gitlab-ci.yml`](.gitlab-ci.yml):
 
 ```
-image: paddyhack/nikola
+image: registry.gitlab.com/paddy-hack/nikola
 
 test:
   script:
@@ -45,7 +45,7 @@ pages:
   - master
 ```
 
-This basically means: use the `paddyhack/nikola` image, which will install Nikola with all its features (`"nikola [extras]"`), and build the site.
+This basically means: use the `registry.gitlab.com/paddy-hack/nikola` image, which will install Nikola with all its features (`"nikola [extras]"`), and build the site.
 
 ## Building locally
 
