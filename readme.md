@@ -45,11 +45,12 @@ pages:
   - master
 ```
 
-This basically means: use the `registry.gitlab.com/paddy-hack/nikola` image, which will install Nikola with all its features (`"nikola [extras]"`), and build the site.
+This uses the `registry.gitlab.com/paddy-hack/nikola` Docker image,
+which provides Nikola with all its extras, to build the site.
 
 ## Building locally
 
-To work locally with this project, you'll have to follow the steps below:
+To work locally with this project, you can follow the steps below:
 
 1. Fork, clone or download this project
 1. [Install][] Nikola
@@ -58,6 +59,10 @@ To work locally with this project, you'll have to follow the steps below:
 1. Add content
 
 Read more at Nikola's [documentation][].
+
+Alternatively, you can use the `registry.gitlab.com/paddy-hack/nikola`
+Docker image.  See the associated project's [README][image-readme] for
+more information.
 
 ## GitLab User or Group Pages
 
@@ -137,3 +142,4 @@ Forked from @sukiletxe
 [documentation]: https://getnikola.com/documentation.html
 [userpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#user-or-group-pages
 [projpages]: https://docs.gitlab.com/ce/user/project/pages/introduction.html#project-pages
+[image-readme]: https://gitlab.com/paddy-hack/nikola
