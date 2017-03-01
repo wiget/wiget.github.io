@@ -68,6 +68,18 @@ project's **Settings**.
 
 Read more about [user/group Pages][userpages] and [project Pages][projpages].
 
+## Using a different branch
+
+If you keep code on the `master` branch and want the website on a different one, 
+for example a `blog` branch, then you must make the corresponding change
+on the `pages` job on the `.gitlab-ci.yml` file.
+
+```
+  only:
+  - blog
+```
+
+
 ## Did you fork this project?
 
 If you forked this project for your own use, please go to your project's
@@ -81,6 +93,39 @@ unless you want to contribute back to the upstream project.
     Either that you have wrongly set up the CSS URL in your templates, or
     your static generator has a configuration option that needs to be explicitly
     set in order to serve static assets under a relative URL.
+    
+1. Building passes but deploy stage fails.
+
+    Nikola's default configuration will by build the site on the `output` directory,
+    but Gitlab expects it on  `public`.  So you must change
+    `OUTPUT_FOLDER = "public"` on `conf.py` or deploying will fail.
+    
+    Alternatively, you can add `mv output public` on the `.gitlab-ci.yml` file  
+    after the `nikola build` line.
+    
+    If you cloned this project as starting point, then `conf.py` is already updated.
+    
+1. I get a strange lexer exception 
+
+    ![Build fails](https://i.imgur.com/e5nJVct.png)
+    You are likely using extensions not enabled by the `paddyhack/nikola`.
+    For example, if your site has Ipython/Jupyter posts 
+    (that is, `.ipynb` format via `POSTS` or `PAGES` on `conf.py` )
+    Gitlab build won't be able to compile them, even if you locally can.
+    
+    The `paddyhack/nikola` image has the full `nikola[extras]`  but not
+    additional software (like ipython, pandoc, latex, or any software you may
+    have in your local system).
+    
+    The fix is to install any extra needed software before building.  
+    In the case of `.ipynb` support,  edit the `.gitlab-ci.yml` file and change
+
+```
+pages:
+    script: 
+      - pip3 install jupyter
+      - nikola build
+```
     
 ----
 
