@@ -1,4 +1,4 @@
-image: paddyhack/nikola
+image: registry.gitlab.com/paddy-hack/nikola
 
 test:
   script:
