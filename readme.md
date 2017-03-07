@@ -77,7 +77,7 @@ Read more about [user/group Pages][userpages] and [project Pages][projpages].
 
 If you keep code on the `master` branch and want the website on a different one,
 for example a `blog` branch, then you must make the corresponding change
-on the `pages` job on the `.gitlab-ci.yml` file.
+on the `pages` job in the `.gitlab-ci.yml` file.
 
 ```
   only:
@@ -93,44 +93,45 @@ unless you want to contribute back to the upstream project.
 
 ## Troubleshooting
 
-1. CSS is missing! That means two things:
+1. CSS is missing! That means one of two things:
 
-    Either that you have wrongly set up the CSS URL in your templates, or
-    your static generator has a configuration option that needs to be explicitly
-    set in order to serve static assets under a relative URL.
+    Either that you have set up the CSS URL in your templates incorrectly, or
+    your static generator has a configuration option that needs to be set explicitly
+    in order to serve static assets under a relative URL.
 
 1. Building passes but deploy stage fails.
 
-    Nikola's default configuration will by build the site on the `output` directory,
-    but Gitlab expects it on  `public`.  So you must change
-    `OUTPUT_FOLDER = "public"` on `conf.py` or deploying will fail.
+    Nikola's default configuration will by default build the site in the `output` directory,
+    but GitLab expects it in  `public`.  So you must change
+    `OUTPUT_FOLDER = "public"` in `conf.py` or deploying will fail.
 
-    Alternatively, you can add `mv output public` on the `.gitlab-ci.yml` file
+    Alternatively, you can add `mv output public` in the `.gitlab-ci.yml` file
     after the `nikola build` line.
 
-    If you cloned this project as starting point, then `conf.py` is already updated.
+    If you cloned this project as your starting point, then `conf.py` is already updated
+    to build in the `public` directory.
 
 1. I get a strange lexer exception
 
     ![Build fails](https://i.imgur.com/e5nJVct.png)
-    You are likely using extensions not enabled by the `registry.gitlab.com/paddy-hack/nikola`.
+    You are probably using extensions that require software not included in the `registry.gitlab.com/paddy-hack/nikola` image.
     For example, if your site has Ipython/Jupyter posts
-    (that is, `.ipynb` format via `POSTS` or `PAGES` on `conf.py` )
-    Gitlab build won't be able to compile them, even if you locally can.
+    (that is, `.ipynb` format via `POSTS` or `PAGES` in `conf.py` )
+    GitLab build won't be able to compile them, even if you locally can.
 
-    The `registry.gitlab.com/paddy-hack/nikola` image has the full `nikola[extras]`  but not
-    additional software (like ipython, pandoc, latex, or any software you may
-    have in your local system).
+    The `registry.gitlab.com/paddy-hack/nikola` image includes the `nikola[extras]` but not any
+    additional software (like `ipython`, `pandoc`, `latex`, or any software you may
+    have on your local system) that your extensions may require.
 
-    The fix is to install any extra needed software before building.
+    The fix is to install any extra software you need before building.
     In the case of `.ipynb` support,  edit the `.gitlab-ci.yml` file and change
 
-```
-pages:
-    script:
-      - pip3 install jupyter
-      - nikola build
-```
+    ```
+    pages:
+      script:
+        - pip3 install jupyter
+        - nikola build
+    ```
 
 ----
 
