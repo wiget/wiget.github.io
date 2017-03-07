@@ -113,12 +113,12 @@ unless you want to contribute back to the upstream project.
 1. I get a strange lexer exception
 
     ![Build fails](https://i.imgur.com/e5nJVct.png)
-    You are likely using extensions not enabled by the `paddyhack/nikola`.
+    You are likely using extensions not enabled by the `registry.gitlab.com/paddy-hack/nikola`.
     For example, if your site has Ipython/Jupyter posts
     (that is, `.ipynb` format via `POSTS` or `PAGES` on `conf.py` )
     Gitlab build won't be able to compile them, even if you locally can.
 
-    The `paddyhack/nikola` image has the full `nikola[extras]`  but not
+    The `registry.gitlab.com/paddy-hack/nikola` image has the full `nikola[extras]`  but not
     additional software (like ipython, pandoc, latex, or any software you may
     have in your local system).
 
