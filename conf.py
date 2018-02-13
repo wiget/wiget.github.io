@@ -21,7 +21,7 @@ BLOG_AUTHOR = "Nikola Tesla"  # (translatable)
 BLOG_TITLE = "Example Nikola website using GitLab Pages!"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://pages.gitlab.io/nikola/"
+SITE_URL = "https://wiget.gitlab.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://pages.gitlab.io/nikola/"
@@ -81,7 +81,7 @@ BLOG_DESCRIPTION = "This is a demo site for Nikola."  # (translatable)
 # in the default language will be shown instead.
 
 # What is the default language?
-DEFAULT_LANG = "en"
+DEFAULT_LANG = "pl"
 
 # What other languages do you have?
 # The format is {"translationcode" : "path/to/translation" }
@@ -188,7 +188,7 @@ PAGES = (
 # (e.g. 'Europe/Zurich')
 # Also, if you want to use a different time zone in some of your posts,
 # you can use the ISO 8601/RFC 3339 format (ex. 2012-03-30T23:00:00+02:00)
-TIMEZONE = "Europe/Paris"
+TIMEZONE = "Europe/Warsaw"
 
 # If you want to use ISO 8601 (also valid RFC 3339) throughout Nikola
 # (especially in new_post), set this to True.
