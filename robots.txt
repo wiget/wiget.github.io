@@ -1,0 +1,4 @@
+Sitemap: https://wiget.gitlab.io/sitemapindex.xml
+
+User-Agent: *
+Host: wiget.gitlab.io
